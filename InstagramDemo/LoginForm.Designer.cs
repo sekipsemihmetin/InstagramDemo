@@ -34,6 +34,7 @@
             lnkRegister = new LinkLabel();
             label1 = new Label();
             label2 = new Label();
+            lnkForgotPassword = new LinkLabel();
             SuspendLayout();
             // 
             // txtUsername
@@ -41,7 +42,7 @@
             txtUsername.BackColor = Color.Turquoise;
             txtUsername.ForeColor = Color.White;
             txtUsername.Location = new Point(116, 393);
-            txtUsername.Margin = new Padding(6, 6, 6, 6);
+            txtUsername.Margin = new Padding(6);
             txtUsername.Name = "txtUsername";
             txtUsername.PlaceholderText = "Enter your username!!";
             txtUsername.Size = new Size(322, 39);
@@ -51,7 +52,7 @@
             // 
             txtPassword.BackColor = Color.Turquoise;
             txtPassword.Location = new Point(116, 478);
-            txtPassword.Margin = new Padding(6, 6, 6, 6);
+            txtPassword.Margin = new Padding(6);
             txtPassword.Name = "txtPassword";
             txtPassword.PlaceholderText = "Enter your password!!";
             txtPassword.Size = new Size(322, 39);
@@ -61,7 +62,7 @@
             // 
             btnLogin.BackColor = Color.SkyBlue;
             btnLogin.Location = new Point(116, 588);
-            btnLogin.Margin = new Padding(6, 6, 6, 6);
+            btnLogin.Margin = new Padding(6);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(325, 68);
             btnLogin.TabIndex = 4;
@@ -104,20 +105,33 @@
             label2.TabIndex = 7;
             label2.Text = "Simple Social Media";
             // 
+            // lnkForgotPassword
+            // 
+            lnkForgotPassword.AutoSize = true;
+            lnkForgotPassword.Location = new Point(155, 674);
+            lnkForgotPassword.Name = "lnkForgotPassword";
+            lnkForgotPassword.Size = new Size(242, 32);
+            lnkForgotPassword.TabIndex = 8;
+            lnkForgotPassword.TabStop = true;
+            lnkForgotPassword.Text = "I Forgot My Password";
+            lnkForgotPassword.LinkClicked += linkLabel1_LinkClicked;
+            // 
             // LoginForm
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaptionText;
             ClientSize = new Size(590, 961);
+            Controls.Add(lnkForgotPassword);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(lnkRegister);
             Controls.Add(btnLogin);
             Controls.Add(txtPassword);
             Controls.Add(txtUsername);
-            Margin = new Padding(6, 6, 6, 6);
+            Margin = new Padding(6);
             Name = "LoginForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "LoginForm";
             ResumeLayout(false);
             PerformLayout();
@@ -130,5 +144,6 @@
         private LinkLabel lnkRegister;
         private Label label1;
         private Label label2;
+        private LinkLabel lnkForgotPassword;
     }
 }

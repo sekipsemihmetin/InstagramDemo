@@ -18,7 +18,7 @@ namespace InstagramDemo
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             var context = new AppDbContext();
-            Application.Run(new LoginForm(new UserService(new GenericRepository<User>(context), new UserRepository(context)), new PostService(new GenericRepository<Post>(context), new PostRepository(context), new GenericRepository<PostLike>(context), new GenericRepository<Hasthag>(context),new GenericRepository<PostHashTag>(context))));
+            Application.Run(new LoginForm(new UserService(new GenericRepository<User>(context), new UserRepository(context)), new PostService(new GenericRepository<Post>(context), new PostRepository(context), new GenericRepository<PostLike>(context), new GenericRepository<Hasthag>(context),new GenericRepository<PostHashTag>(context),new GenericRepository<Category>(context),new GenericRepository<PostComplain>(context)),new Email("sekipmetin.darussifa@gmail.com", "aklz foih eqkt frdt") ));
         }
     }
 }

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InstagramDemo.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20241103172510_Init")]
+    [Migration("20241106185942_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -25,6 +25,66 @@ namespace InstagramDemo.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("InstagramDemo.Entities.Category", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedDate = new DateTime(2024, 11, 6, 21, 59, 42, 420, DateTimeKind.Local).AddTicks(4013),
+                            Name = "Haber"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedDate = new DateTime(2024, 11, 6, 21, 59, 42, 420, DateTimeKind.Local).AddTicks(4028),
+                            Name = "Bilim"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreatedDate = new DateTime(2024, 11, 6, 21, 59, 42, 420, DateTimeKind.Local).AddTicks(4029),
+                            Name = "Sanat"
+                        });
+                });
+
+            modelBuilder.Entity("InstagramDemo.Entities.Hasthag", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Hasthags");
+                });
+
             modelBuilder.Entity("InstagramDemo.Entities.Post", b =>
                 {
                     b.Property<int>("Id")
@@ -32,6 +92,9 @@ namespace InstagramDemo.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("CategoryId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Content")
                         .IsRequired()
@@ -52,9 +115,37 @@ namespace InstagramDemo.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CategoryId");
+
                     b.HasIndex("UserId");
 
                     b.ToTable("Posts");
+                });
+
+            modelBuilder.Entity("InstagramDemo.Entities.PostHashTag", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("HashTagID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PostID")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("HashTagID");
+
+                    b.HasIndex("PostID");
+
+                    b.ToTable("PostHashTags");
                 });
 
             modelBuilder.Entity("InstagramDemo.Entities.PostLike", b =>
@@ -116,13 +207,38 @@ namespace InstagramDemo.Migrations
 
             modelBuilder.Entity("InstagramDemo.Entities.Post", b =>
                 {
+                    b.HasOne("InstagramDemo.Entities.Category", "Category")
+                        .WithMany("Posts")
+                        .HasForeignKey("CategoryId");
+
                     b.HasOne("InstagramDemo.Entities.User", "User")
                         .WithMany("Posts")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("Category");
+
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("InstagramDemo.Entities.PostHashTag", b =>
+                {
+                    b.HasOne("InstagramDemo.Entities.Hasthag", "Hasthag")
+                        .WithMany("PostHashTags")
+                        .HasForeignKey("HashTagID")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("InstagramDemo.Entities.Post", "Post")
+                        .WithMany("PostHashTags")
+                        .HasForeignKey("PostID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Hasthag");
+
+                    b.Navigation("Post");
                 });
 
             modelBuilder.Entity("InstagramDemo.Entities.PostLike", b =>
@@ -144,8 +260,20 @@ namespace InstagramDemo.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("InstagramDemo.Entities.Category", b =>
+                {
+                    b.Navigation("Posts");
+                });
+
+            modelBuilder.Entity("InstagramDemo.Entities.Hasthag", b =>
+                {
+                    b.Navigation("PostHashTags");
+                });
+
             modelBuilder.Entity("InstagramDemo.Entities.Post", b =>
                 {
+                    b.Navigation("PostHashTags");
+
                     b.Navigation("PostLikes");
                 });
 

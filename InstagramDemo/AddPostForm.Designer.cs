@@ -32,6 +32,7 @@
             btnAddPost = new Button();
             txtTitle = new TextBox();
             txtContent = new TextBox();
+            cmbCategory = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)pbPicture).BeginInit();
             SuspendLayout();
             // 
@@ -39,7 +40,7 @@
             // 
             pbPicture.BackColor = Color.MediumTurquoise;
             pbPicture.Location = new Point(43, 56);
-            pbPicture.Margin = new Padding(6, 6, 6, 6);
+            pbPicture.Margin = new Padding(6);
             pbPicture.Name = "pbPicture";
             pbPicture.Size = new Size(511, 269);
             pbPicture.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -51,7 +52,7 @@
             // 
             btnAddPost.BackColor = Color.SkyBlue;
             btnAddPost.Location = new Point(162, 828);
-            btnAddPost.Margin = new Padding(6, 6, 6, 6);
+            btnAddPost.Margin = new Padding(6);
             btnAddPost.Name = "btnAddPost";
             btnAddPost.Size = new Size(269, 70);
             btnAddPost.TabIndex = 1;
@@ -63,7 +64,7 @@
             // 
             txtTitle.BackColor = Color.Turquoise;
             txtTitle.Location = new Point(141, 394);
-            txtTitle.Margin = new Padding(6, 6, 6, 6);
+            txtTitle.Margin = new Padding(6);
             txtTitle.Name = "txtTitle";
             txtTitle.PlaceholderText = "Title should be here..";
             txtTitle.Size = new Size(318, 39);
@@ -73,12 +74,20 @@
             // 
             txtContent.BackColor = Color.Turquoise;
             txtContent.Location = new Point(43, 510);
-            txtContent.Margin = new Padding(6, 6, 6, 6);
+            txtContent.Margin = new Padding(6);
             txtContent.Multiline = true;
             txtContent.Name = "txtContent";
             txtContent.PlaceholderText = "Content Should Be Here..";
             txtContent.Size = new Size(511, 241);
             txtContent.TabIndex = 3;
+            // 
+            // cmbCategory
+            // 
+            cmbCategory.FormattingEnabled = true;
+            cmbCategory.Location = new Point(141, 442);
+            cmbCategory.Name = "cmbCategory";
+            cmbCategory.Size = new Size(318, 40);
+            cmbCategory.TabIndex = 4;
             // 
             // AddPostForm
             // 
@@ -86,12 +95,14 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaptionText;
             ClientSize = new Size(590, 961);
+            Controls.Add(cmbCategory);
             Controls.Add(txtContent);
             Controls.Add(txtTitle);
             Controls.Add(btnAddPost);
             Controls.Add(pbPicture);
-            Margin = new Padding(6, 6, 6, 6);
+            Margin = new Padding(6);
             Name = "AddPostForm";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "AddPostForm";
             ((System.ComponentModel.ISupportInitialize)pbPicture).EndInit();
             ResumeLayout(false);
@@ -104,5 +115,6 @@
         private Button btnAddPost;
         private TextBox txtTitle;
         private TextBox txtContent;
+        private ComboBox cmbCategory;
     }
 }

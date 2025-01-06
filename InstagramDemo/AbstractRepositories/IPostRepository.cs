@@ -13,6 +13,7 @@ namespace InstagramDemo.AbstractRepositories
         List<Post> GetAllPostsWithUsers();
 
         PostLike GetPostLike(int userId, int postID);
+        void RemovePost(int id); 
        
     }
 }

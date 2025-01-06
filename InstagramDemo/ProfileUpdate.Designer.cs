@@ -41,7 +41,7 @@
             txtUsername.BackColor = Color.SkyBlue;
             txtUsername.Enabled = false;
             txtUsername.Location = new Point(94, 161);
-            txtUsername.Margin = new Padding(6, 6, 6, 6);
+            txtUsername.Margin = new Padding(6);
             txtUsername.Name = "txtUsername";
             txtUsername.PlaceholderText = "Enter username";
             txtUsername.Size = new Size(387, 39);
@@ -52,7 +52,7 @@
             txtEmail.BackColor = Color.SkyBlue;
             txtEmail.Enabled = false;
             txtEmail.Location = new Point(94, 244);
-            txtEmail.Margin = new Padding(6, 6, 6, 6);
+            txtEmail.Margin = new Padding(6);
             txtEmail.Name = "txtEmail";
             txtEmail.PlaceholderText = "Enter email";
             txtEmail.Size = new Size(387, 39);
@@ -62,7 +62,7 @@
             // 
             pbPicture.BackColor = Color.Turquoise;
             pbPicture.Location = new Point(73, 347);
-            pbPicture.Margin = new Padding(6, 6, 6, 6);
+            pbPicture.Margin = new Padding(6);
             pbPicture.Name = "pbPicture";
             pbPicture.Size = new Size(419, 326);
             pbPicture.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -75,7 +75,7 @@
             btnUpdate.BackColor = Color.SkyBlue;
             btnUpdate.ForeColor = SystemColors.ActiveCaptionText;
             btnUpdate.Location = new Point(185, 713);
-            btnUpdate.Margin = new Padding(6, 6, 6, 6);
+            btnUpdate.Margin = new Padding(6);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(209, 49);
             btnUpdate.TabIndex = 4;
@@ -105,8 +105,9 @@
             Controls.Add(pbPicture);
             Controls.Add(txtEmail);
             Controls.Add(txtUsername);
-            Margin = new Padding(6, 6, 6, 6);
+            Margin = new Padding(6);
             Name = "ProfileUpdate";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "ProfileUpdate";
             Load += ProfileUpdate_Load;
             ((System.ComponentModel.ISupportInitialize)pbPicture).EndInit();

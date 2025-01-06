@@ -40,7 +40,7 @@
             // 
             txtUsername.BackColor = Color.Turquoise;
             txtUsername.Location = new Point(54, 244);
-            txtUsername.Margin = new Padding(6, 6, 6, 6);
+            txtUsername.Margin = new Padding(6);
             txtUsername.Name = "txtUsername";
             txtUsername.PlaceholderText = "Please enter username!!!";
             txtUsername.Size = new Size(474, 39);
@@ -50,7 +50,7 @@
             // 
             txtPassword.BackColor = Color.Turquoise;
             txtPassword.Location = new Point(54, 365);
-            txtPassword.Margin = new Padding(6, 6, 6, 6);
+            txtPassword.Margin = new Padding(6);
             txtPassword.Name = "txtPassword";
             txtPassword.PlaceholderText = "Please enter password!!!";
             txtPassword.Size = new Size(474, 39);
@@ -60,7 +60,7 @@
             // 
             txtEmail.BackColor = Color.Turquoise;
             txtEmail.Location = new Point(54, 481);
-            txtEmail.Margin = new Padding(6, 6, 6, 6);
+            txtEmail.Margin = new Padding(6);
             txtEmail.Name = "txtEmail";
             txtEmail.PlaceholderText = "Please enter email!!";
             txtEmail.Size = new Size(474, 39);
@@ -79,7 +79,7 @@
             // 
             btnRegister.BackColor = Color.SkyBlue;
             btnRegister.Location = new Point(136, 617);
-            btnRegister.Margin = new Padding(6, 6, 6, 6);
+            btnRegister.Margin = new Padding(6);
             btnRegister.Name = "btnRegister";
             btnRegister.Size = new Size(314, 96);
             btnRegister.TabIndex = 7;
@@ -111,8 +111,9 @@
             Controls.Add(txtEmail);
             Controls.Add(txtPassword);
             Controls.Add(txtUsername);
-            Margin = new Padding(6, 6, 6, 6);
+            Margin = new Padding(6);
             Name = "Form1";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Form1";
             ResumeLayout(false);
             PerformLayout();

@@ -12,9 +12,16 @@ namespace InstagramDemo.Entities
         public string Content { get; set; }
         public string? ImagePath { get; set; }
         public int UserId { get; set; }
+        public int? CategoryId { get; set; }
+         
         public User User { get; set; }
+        public Category Category { get; set; }
+
+
         public List<PostLike> PostLikes { get; set; }
         public List<PostHashTag> PostHashTags { get; set; }
-        
+        public List<PostComplain> PostComplains { get; set; }
+
+
     }
 }

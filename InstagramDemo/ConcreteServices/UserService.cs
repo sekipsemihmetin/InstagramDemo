@@ -24,6 +24,16 @@ namespace InstagramDemo.ConcreteServices
             _repository.Add(user);
         }
 
+        public void DeleteUser(int id)
+        {
+            _repository.Delete(id);
+        }
+
+        public List<User> GetAllUserAdminFalse()
+        {
+            return _repository.GetAll().Where(x=>x.IsAdmin==false).ToList();    
+        }
+
         public User GetUserByTryToLogin(string username, string password)
         {
             var allUsers = _repository.GetAll();

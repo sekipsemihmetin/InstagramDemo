@@ -18,5 +18,7 @@ namespace InstagramDemo.AbstractServices
         User GetUserByTryToLogin(string username,string password);
 
         void UpdateUser(int id,User user);
+        void DeleteUser(int id);
+       public List<User> GetAllUserAdminFalse();
     }
 }

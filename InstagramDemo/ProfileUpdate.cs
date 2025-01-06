@@ -15,22 +15,24 @@ namespace InstagramDemo
 {
     public partial class ProfileUpdate : Form
     {
-        private readonly User user;
+        private readonly User _user;
+        private readonly IPostService _postService;
         private readonly IUserService _userService;
         private string _imagePath;
 
-        public ProfileUpdate(User user, IUserService userService)
+        public ProfileUpdate(User user,IPostService postService, IUserService userService)
         {
             InitializeComponent();
-            this.user = user;
+            _user = user;
+            _postService = postService;
             _userService = userService;
         }
 
         private void ProfileUpdate_Load(object sender, EventArgs e)
         {
-            txtUsername.Text = user.Username;
-            txtEmail.Text = user.Email;
-            pbPicture.ImageLocation = user.ImagePath;
+            txtUsername.Text = _user.Username;
+            txtEmail.Text = _user.Email;
+            pbPicture.ImageLocation = _user.ImagePath;
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -48,8 +50,12 @@ namespace InstagramDemo
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            user.ImagePath= _imagePath;
-            _userService.UpdateUser(user.Id,user);
+            _user.ImagePath= _imagePath;
+            _userService.UpdateUser(_user.Id,_user);
+            MessageBox.Show("Updated Succesfully");
+            Form userProfileForm = new UserProfileForm(_user,_postService,_userService);
+            this.Hide();
+            userProfileForm.ShowDialog();
         }
 
         private string SaveImage(string sourcePath)

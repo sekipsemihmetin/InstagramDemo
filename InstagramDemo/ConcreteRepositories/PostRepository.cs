@@ -37,5 +37,10 @@ namespace InstagramDemo.ConcreteRepositories
 
             return postsByUser;
         }
+
+        public void RemovePost(int id)
+        {
+            _context.Remove(id);
+        }
     }
 }

@@ -4,6 +4,7 @@ using InstagramDemo.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InstagramDemo.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241108120431_IsAdmin1")]
+    partial class IsAdmin1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -45,19 +48,19 @@ namespace InstagramDemo.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2024, 11, 9, 1, 42, 25, 650, DateTimeKind.Local).AddTicks(8940),
+                            CreatedDate = new DateTime(2024, 11, 8, 15, 4, 31, 297, DateTimeKind.Local).AddTicks(8426),
                             Name = "Haber"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2024, 11, 9, 1, 42, 25, 650, DateTimeKind.Local).AddTicks(8952),
+                            CreatedDate = new DateTime(2024, 11, 8, 15, 4, 31, 297, DateTimeKind.Local).AddTicks(8441),
                             Name = "Bilim"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedDate = new DateTime(2024, 11, 9, 1, 42, 25, 650, DateTimeKind.Local).AddTicks(8954),
+                            CreatedDate = new DateTime(2024, 11, 8, 15, 4, 31, 297, DateTimeKind.Local).AddTicks(8443),
                             Name = "Sanat"
                         });
                 });
@@ -133,7 +136,7 @@ namespace InstagramDemo.Migrations
                     b.Property<int?>("PostId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("UserId")
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -234,7 +237,7 @@ namespace InstagramDemo.Migrations
                         new
                         {
                             Id = 3,
-                            CreatedDate = new DateTime(2024, 11, 9, 1, 42, 25, 650, DateTimeKind.Local).AddTicks(9039),
+                            CreatedDate = new DateTime(2024, 11, 8, 15, 4, 31, 297, DateTimeKind.Local).AddTicks(8507),
                             Email = "admin@gmail.com",
                             IsAdmin = true,
                             Password = "admin",
@@ -243,7 +246,7 @@ namespace InstagramDemo.Migrations
                         new
                         {
                             Id = 4,
-                            CreatedDate = new DateTime(2024, 11, 9, 1, 42, 25, 650, DateTimeKind.Local).AddTicks(9063),
+                            CreatedDate = new DateTime(2024, 11, 8, 15, 4, 31, 297, DateTimeKind.Local).AddTicks(8527),
                             Email = "admin1@gmail.com",
                             IsAdmin = true,
                             Password = "admin1",
@@ -277,7 +280,8 @@ namespace InstagramDemo.Migrations
                     b.HasOne("InstagramDemo.Entities.User", "User")
                         .WithMany("PostComplains")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.NoAction);
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
 
                     b.Navigation("Post");
 
